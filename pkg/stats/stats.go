@@ -28,7 +28,7 @@ type Summary struct {
 
 type Local struct {
 	SamplesProcessed int64   `json:"samples_processed"`
-	SamplesDroped    int64   `json:"samples_droped"`
+	SamplesDropped   int64   `json:"samples_dropped"`
 	ModeAC           int64   `json:"mode_ac"`
 	ModeS            int64   `json:"mode_s"`
 	Bad              int64   `json:"bad"`

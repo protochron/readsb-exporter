@@ -5,6 +5,7 @@ import "github.com/prometheus/client_golang/prometheus"
 const (
 	Namespace = "readsb"
 	Aircraft  = "aircraft"
+	Stats     = "stats"
 )
 
 var (
@@ -48,6 +49,48 @@ var (
 		Namespace: Namespace,
 		Help:      "Receiver info",
 	}, []string{"version", "lat", "lon"})
+
+	MaxDistanceInMetres = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "max_distance_metres",
+		Namespace: Namespace,
+		Subsystem: "stats",
+		Help:      "Max observed aircraft distance (metres)",
+	})
+
+	MaxDistanceInNauticalMiles = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "max_distance_nautical_miles",
+		Namespace: Namespace,
+		Subsystem: Stats,
+		Help:      "Max observed aircraft distance (nautical miles)",
+	})
+
+	Signal = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "signal",
+		Namespace: Namespace,
+		Subsystem: Stats,
+		Help:      "Signal",
+	})
+
+	PeakSignal = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "peak_signal",
+		Namespace: Namespace,
+		Subsystem: Stats,
+		Help:      "Peak Signal",
+	})
+
+	Noise = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "noise",
+		Namespace: Namespace,
+		Subsystem: Stats,
+		Help:      "Noise",
+	})
+
+	StrongSignals = prometheus.NewGauge(prometheus.GaugeOpts{
+		Name:      "strong_signals",
+		Namespace: Namespace,
+		Subsystem: Stats,
+		Help:      "Strong signals",
+	})
 )
 
 func init() {
@@ -57,4 +100,10 @@ func init() {
 	prometheus.MustRegister(MessagesTotal)
 	prometheus.MustRegister(AircraftMaxRange)
 	prometheus.MustRegister(Receiver)
+	prometheus.MustRegister(MaxDistanceInNauticalMiles)
+	prometheus.MustRegister(MaxDistanceInMetres)
+	prometheus.MustRegister(Signal)
+	prometheus.MustRegister(PeakSignal)
+	prometheus.MustRegister(Noise)
+	prometheus.MustRegister(StrongSignals)
 }

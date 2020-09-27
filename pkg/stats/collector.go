@@ -137,4 +137,10 @@ func (c *Collector) processAircraft() {
 }
 
 func (c *Collector) processStats() {
+	internal.MaxDistanceInNauticalMiles.Set(c.overall.Last1Min.MaxDistanceInNauticalMiles)
+	internal.MaxDistanceInMetres.Set(c.overall.Last1Min.MaxDistanceInMetres)
+	internal.Signal.Set(c.overall.Last1Min.Local.Signal)
+	internal.PeakSignal.Set(c.overall.Last1Min.Local.PeakSignal)
+	internal.Noise.Set(c.overall.Last1Min.Local.Noise)
+	internal.StrongSignals.Set(float64(c.overall.Last1Min.Local.StrongSignals))
 }
