@@ -4,41 +4,42 @@ import "github.com/prometheus/client_golang/prometheus"
 
 const (
 	Namespace = "readsb"
+	Aircraft  = "aircraft"
 )
 
 var (
 	AircraftObservedGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name:      "observed",
 		Namespace: Namespace,
-		Subsystem: "aircraft",
+		Subsystem: Aircraft,
 		Help:      "Number of aircraft observed",
 	})
 
 	AircraftObservedWithPositionGauge = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name:      "observed_with_pos",
 		Namespace: Namespace,
-		Subsystem: "aircraft",
+		Subsystem: Aircraft,
 		Help:      "Number of aircraft observed",
 	})
 
 	AircraftObservedWithMLATCount = prometheus.NewCounter(prometheus.CounterOpts{
 		Name:      "observed_with_mlat",
-		Namespace: "readsb",
-		Subsystem: Namespace,
+		Namespace: Namespace,
+		Subsystem: Aircraft,
 		Help:      "Number of aircraft observed with MLAT",
 	})
 
 	AircraftMaxRange = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name:      "max_range",
 		Namespace: Namespace,
-		Subsystem: "aircraft",
+		Subsystem: Aircraft,
 		Help:      "Max range of observed aircraft",
 	})
 
 	MessagesTotal = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name:      "messages_total",
 		Namespace: Namespace,
-		Subsystem: "aircraft",
+		Subsystem: Aircraft,
 		Help:      "Number of Mode-S messages",
 	})
 

@@ -34,6 +34,7 @@ func (c *Collector) MetricsHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_, _ = w.Write([]byte("unable to read aircraft.json"))
+		c.Logger.Error("unable to read aircraft.json", zap.Error(err))
 		return
 	}
 
@@ -41,6 +42,7 @@ func (c *Collector) MetricsHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_, _ = w.Write([]byte("unable to read receiver.json"))
+		c.Logger.Error("unable to read receiver.json", zap.Error(err))
 		return
 	}
 
@@ -48,6 +50,7 @@ func (c *Collector) MetricsHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_, _ = w.Write([]byte("unable to read stats.json"))
+		c.Logger.Error("unable to read stats.json", zap.Error(err))
 		return
 	}
 
