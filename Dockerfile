@@ -1,4 +1,4 @@
-FROM --platform=${BUILDPLATFORM} golang:1.15.2 as build
+FROM --platform=${BUILDPLATFORM} golang:1.16.5 as build
 WORKDIR /readsb-exporter
 ENV CGO_ENABLED=0
 COPY . /readsb-exporter
